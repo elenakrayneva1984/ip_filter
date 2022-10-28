@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.2)
 set(PATCH_VERSION "3" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(ip_filter)
+project(ip_filter VERSION ${PROJECT_VESRION})
 
 set(SOURCE_EXE main.cpp)
 
