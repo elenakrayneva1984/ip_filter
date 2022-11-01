@@ -6,12 +6,12 @@ int main(int, char **)
 {
     try
     {
-        vv_string ip_pool;
-
+        vector_ip ip_pool;
+ip_pool.push_back(split("1.25.46.1",'\t'));
         for(std::string line; std::getline(std::cin, line);)
         {
             auto v = split(line, '\t');
-            ip_pool.push_back(split(v.at(0), '.'));
+            ip_pool.push_back(v);
         }
 
         // TODO reverse lexicographically sort
@@ -21,17 +21,18 @@ int main(int, char **)
         }
 
         {
-           auto ip = filter(ip_pool, "1.*.*.*", false);
+
+           auto ip = filter(ip_pool, {1,-1,-1,-1}, false);
            print_vector_vs(ip, '.');
         }
 
         {
-           auto ip = filter(ip_pool, "46.70.*.*", false);
+           auto ip = filter(ip_pool, {46, 70, -1, -1}, false);
            print_vector_vs(ip, '.');
         }
 
         {
-            auto ip = filter(ip_pool, "46.*.*.*", true);
+            auto ip = filter(ip_pool, {46, -1, -1, -1}, true);
             print_vector_vs(ip, '.');
         }
 
